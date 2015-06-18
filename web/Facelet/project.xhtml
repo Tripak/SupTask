@@ -8,41 +8,19 @@
     </h:head>
     <h:body>
         <ui:include src="header.xhtml"></ui:include>
-        <table>
-            <tr>
-                <td>
-                    <table align="center">
-                        <tr align="left">
-                            <td>
-                                <h:form>
-                                    <fieldset>
-                                        <legend>Nouveau projet</legend>
-                                        <h:panelGrid columns="2">
-                                            <h:outputLabel>Nom du projet</h:outputLabel>
-                                            <h:inputText value="#{projectBean.title}"/>    
-                                            <h:outputLabel> </h:outputLabel>
-                                            <h:commandButton value="Ajouter" action="#{projectBean.newProject}"/>
-                                        </h:panelGrid>
-                                    </fieldset>
-                                </h:form>
-                            </td>
-                        </tr>            
-                    </table>    
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <table align="center" border="1">
-                        <tr>
-                            <td>
-                                <h:panelGrid rendered="#{loginBean.user.login}" binding="#{projectBean.list}">
-
-                                </h:panelGrid>
-                            </td>
-                        </tr>
-                    </table>    
-                </td>
-            </tr>
-        </table>
+        <h:form>
+                <h:commandButton value="Ajouter un projet" action="#{projectBean.addProject(loginBean.user.id)}"/>
+            </h:form>
+            <h:form>
+                <fieldset>
+                    <legend>Inscription</legend>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel >First name *</h:outputLabel>
+                        <h:inputText value="#{loginBean.user.firstName}"/>
+                        <h:outputLabel> </h:outputLabel>
+                        <h:commandButton value="Register" action="#{loginBean.register}"/>
+                    </h:panelGrid>
+                </fieldset>
+            </h:form>
     </h:body>
 </html>
