@@ -30,7 +30,7 @@ public class ProjectBean implements Serializable {
     private final  List<ProjectEntity> list = ps.getProjectsByUser(id);
 
     public String newProject() {
-        
+        System.out.println();
         boolean exist = false;
         List<ProjectEntity> p = ps.getProjectsByUser(id);
         for (ProjectEntity i : p) {
