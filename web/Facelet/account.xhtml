@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Account page</title>
+    </h:head>
+    <h:body>
+        <ui:include src="header.xhtml"></ui:include>
+         <h:form>
+            <h:commandButton value="Supprimer" action="#{userBean.deleteUser(loginBean.user)}"/>
+         </h:form>
+         <h:form>
+            <fieldset>
+                <legend>Modifier ces informations</legend>
+                <h:panelGrid columns="2">
+                   <h:outputLabel >First name *</h:outputLabel>
+                    <h:inputText value="#{loginBean.user.firstName}"/>
+
+                    <h:outputLabel>Last name *</h:outputLabel>
+                    <h:inputText value="#{loginBean.user.lastName}"/>
+
+                    <h:outputLabel>Login *</h:outputLabel>
+                    <h:inputText value="#{loginBean.user.login}"/>
+
+                    <h:outputLabel>Password *</h:outputLabel>
+                    <h:inputSecret value="#{loginBean.user.password}"/>
+
+                    <h:outputLabel>Email *</h:outputLabel>
+                    <h:inputText value="#{loginBean.user.email}"/>
+                    
+                    <h:outputLabel>Phone number *</h:outputLabel>
+                    <h:inputText value="#{loginBean.user.phoneNumber}"/>
+
+                    <h:outputLabel>Zip code *</h:outputLabel>
+                    <h:inputText value="#{loginBean.user.postal}"/>
+                    
+                    <h:commandButton value="Register" action="#{userBean.updateUser(loginBean.user)}"/>
+                </h:panelGrid>
+            </fieldset>
+        </h:form>
+    </h:body>
+</html>

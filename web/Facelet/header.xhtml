@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="./css.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    <h:body id="header">       
+        <table style="width: 100%; alignment-adjust: auto" >
+            <tr>
+                <td style="background-color: azure;">
+                    <div style="float: left; margin-bottom: -5px;">
+                        <img src="" />
+                    </div>
+                </td>
+                <td style="background-color: beige; width: 20%;">
+                    <h:form rendered="#{empty loginBean.user.login}">
+                        <fieldset>
+                            <legend>Connection</legend>
+                            <h:panelGrid columns="2">
+                                <h:outputText value="Login : "/>
+                                <h:inputText value="#{loginBean.login}"><f:ajax event="blur"/></h:inputText>
+                                <h:outputText value="Password : "/>
+                                <h:inputSecret value="#{loginBean.password}"><f:ajax event="blur"/></h:inputSecret>
+                                <h:commandButton value="Login in" type="submit" action="#{loginBean.loginIn}"/>
+                                <h:commandButton value="Register" action="#{redirectBean.redirection('register')}"/>                                    
+                            </h:panelGrid>
+                        </fieldset>
+                    </h:form>
+                    
+                    <h:panelGrid rendered="#{loginBean.user.login != null}">
+                        <h4 style="text-align: center;">#{loginBean.user.login}</h4>
+                        <h:outputText  style="text-align: center;" value="#{loginBean.user.login}"></h:outputText>
+                        <h:form rendered="#{loginBean.user != null}">
+                            <h:panelGrid width="90%">
+                                <h:commandButton value="Déconnection" action="#{loginBean.logOut}"/>
+                                <h:commandButton value="Mon compte" action="#{redirectBean.redirection('project')}" />
+                                <h:commandButton value="Modifier mes informations" action="#{redirectBean.redirection('account')}" />
+                            </h:panelGrid>
+                        </h:form>
+                    </h:panelGrid>
+                </td>
+            </tr>
+        </table>
+    </h:body>
+</html>
